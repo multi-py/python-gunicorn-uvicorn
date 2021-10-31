@@ -16,7 +16,7 @@ LABEL maintainer=$maintainer
 LABEL org.opencontainers.image.description="python:$publish_target $package:$package_version $TARGETPLATFORM"
 
 
-COPY --from=ghcr.io/multi-py/python-uvicorn:py${publish_target}-${$package_version} /usr/local/lib/python${$python_version}/site-packages/* /usr/local/lib/python${$python_version}/site-packages/
+COPY --from=ghcr.io/multi-py/python-uvicorn:py$publish_target-$package_version /usr/local/lib/python${$python_version}/site-packages/* /usr/local/lib/python${$python_version}/site-packages/
 
 # Startup Script
 COPY ./assets/start.sh /start.sh
