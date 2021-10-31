@@ -1,0 +1,40 @@
+
+name: Uvicorn Image Builder
+
+# Publish on new pushed, and build on Monday Morning (UTC) regardless.
+on:
+  push:
+    branches:
+      - 'main'
+    paths-ignore:
+      - '**/README.md'
+      - 'templates/**'
+  schedule:
+    - cron:  '4 0 * * WED'
+
+
+jobs:
+  Uvicorn-Builder:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python_versions: ["3.6", "3.7", "3.8", "3.9", "3.10"]
+        package_versions: ["0.12.1", "0.12.2", "0.12.3", "0.13.0", "0.13.1", "0.13.2", "0.13.3", "0.13.4", "0.14.0", "0.15.0"]
+        target_base: ["full", "slim", "alpine"]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: "Create and Push Image"
+        uses: multi-py/action-python-image-builder@v1
+        with:
+          package: "uvicorn[standard]"
+          package_latest_version: "0.15.0"
+          maintainer: "Robert Hafner <tedivm@tedivm.com>"
+          python_version: ${{ matrix.python_versions }}
+          package_version: ${{ matrix.package_versions }}
+          target_base: ${{ matrix.target_base }}
+          registry_password: ${{ secrets.GITHUB_TOKEN }}
+          dockerfile: "${{ github.workspace }}/dockerfile"
+          docker_build_path: "${{ github.workspace }}/"

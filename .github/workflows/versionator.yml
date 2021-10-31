@@ -1,0 +1,27 @@
+
+name: Uvicorn Version Updater
+
+# Every 30 minutes check for a new version of the package.
+on:
+  push:
+    branches:
+      - 'main'
+  schedule:
+    - cron:  '10,50 * * * *'
+
+jobs:
+  Version-Updater:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.WORKFLOW_GITHUB_TOKEN }}
+
+      - name: "Update Image Build Workflow"
+        uses: multi-py/action-python-versionator@v1
+        with:
+          package: "uvicorn"
+          git_name: "Robert Hafner"
+          git_email: "tedivm@tedivm.com"
+          action_path: ${{ github.workspace }}/.github/workflows/image-build.yml
