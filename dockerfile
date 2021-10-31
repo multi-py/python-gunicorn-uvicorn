@@ -6,7 +6,7 @@ FROM ghcr.io/multi-py/python-uvicorn:py$publish_target-$package_version as uvico
 ARG python_version
 ARG publish_target
 ARG package_version
-FROM python:ghcr.io/multi-py/python-gunicorn:py$publish_target-LATEST
+FROM ghcr.io/multi-py/python-gunicorn:py$publish_target-LATEST
 
 # Add args to container scope.
 ARG publish_target
