@@ -2,6 +2,8 @@
 
 A multiarchitecture container image for running Python with Gunicorn and Uvicorn.
 
+For this container the latest version of gunicorn is always used, and the tags represent the uvicorn version.
+
 ## Benefits
 
 ### Multi Architecture Builds
@@ -30,6 +32,43 @@ Within 30 minutes of a new release to uvicorn on PyPI builds will kick off for n
 Containers are rebuilt weekly in order to take on the security patches from upstream containers.
 
 ## How To
+
+### Full
+To pull the latest slim version:
+
+```bash
+docker pull ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-LATEST
+```
+
+To include it in the dockerfile instead:
+
+```dockerfile
+FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-LATEST
+```
+
+### Slim
+
+To pull the latest slim version:
+
+```bash
+docker pull ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-slim-LATEST
+```
+
+To include it in the dockerfile instead:
+
+```dockerfile
+FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-slim-LATEST
+```
+
+### Copy Just the Packages
+It's also possible to copy just the Python packages themselves. This is particularly useful when you want to use the precompiled libraries from multiple containers.
+
+```dockerfile
+FROM python:3.10
+
+COPY --from=ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-slim-LATEST /usr/local/lib/python3.10/site-packages/* /usr/local/lib/python3.10/site-packages/
+```
+
 ### Add Your App
 
 By default the startup script checks for the following packages and uses the first one it can find-
@@ -48,31 +87,9 @@ COPY ./app app
 ```
 
 
-### Multistage Example
-
-In this example we use a multistage build to compile our libraries in one container and then move them into the container we plan on using. This creates small containers while avoiding the frustration of installing build tools in a piecemeal way.
-
-```dockerfile
-FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-0.15.0
-
-# Build any packages in the bigger container with all the build tools
-COPY requirements /requirements
-RUN pip install --no-cache-dir -r /requirements
-
-
-FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-slim-0.15.0
-
-# Copy the compiled python libraries from the first stage
-COPY --from=0 /usr/local/lib/python3.9 /usr/local/lib/python3.9
-
-COPY ./app app
-```
-
-
 ### PreStart Script
 
 When the container is launched it will run the script at `/app/prestart.sh` before starting the uvicorn service. This is an ideal place to put things like database migrations.
-
 
 ## Python Versions
 
