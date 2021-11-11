@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python_versions: ["3.6", "3.7", "3.8", "3.9", "3.10"] 
+        python_versions: ["3.6", "3.7", "3.8", "3.9", "3.10"]
         package_versions: ["0.13.2", "0.13.3", "0.13.4", "0.14.0", "0.15.0"]
         target_base: ["full", "slim", "alpine"]
     steps:
@@ -28,6 +28,7 @@ jobs:
 
       - name: "Create and Push Image"
         uses: multi-py/action-python-image-builder@v1
+        timeout-minutes: 45
         with:
           package: "uvicorn[standard]"
           package_latest_version: "0.15.0"
