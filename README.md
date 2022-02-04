@@ -81,7 +81,7 @@ By default the startup script checks for the following packages and uses the fir
 If you are using pip to install dependencies your dockerfile could look like this-
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-0.17.3
+FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-0.17.4
 
 COPY requirements /requirements
 RUN pip install --no-cache-dir -r /requirements
@@ -146,8 +146,8 @@ If you get use out of these containers please consider sponsoring me using Githu
 </center>
 
 ## Tags
-* Recommended Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-0.17.3`
-* Slim Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-slim-0.17.3`
+* Recommended Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-0.17.4`
+* Slim Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-slim-0.17.4`
 
 Tags are based on the package version, python version, and the upstream container the container is based on.
 
@@ -158,6 +158,11 @@ Tags are based on the package version, python version, and the upstream containe
 | latest | 3.8 | py3.8-latest | py3.8-slim-latest | py3.8-alpine-latest |
 | latest | 3.7 | py3.7-latest | py3.7-slim-latest | py3.7-alpine-latest |
 | latest | 3.6 | py3.6-latest | py3.6-slim-latest | py3.6-alpine-latest |
+| 0.17.4 | 3.10 | py3.10-0.17.4 | py3.10-slim-0.17.4 | py3.10-alpine-0.17.4 |
+| 0.17.4 | 3.9 | py3.9-0.17.4 | py3.9-slim-0.17.4 | py3.9-alpine-0.17.4 |
+| 0.17.4 | 3.8 | py3.8-0.17.4 | py3.8-slim-0.17.4 | py3.8-alpine-0.17.4 |
+| 0.17.4 | 3.7 | py3.7-0.17.4 | py3.7-slim-0.17.4 | py3.7-alpine-0.17.4 |
+| 0.17.4 | 3.6 | py3.6-0.17.4 | py3.6-slim-0.17.4 | py3.6-alpine-0.17.4 |
 | 0.17.3 | 3.10 | py3.10-0.17.3 | py3.10-slim-0.17.3 | py3.10-alpine-0.17.3 |
 | 0.17.3 | 3.9 | py3.9-0.17.3 | py3.9-slim-0.17.3 | py3.9-alpine-0.17.3 |
 | 0.17.3 | 3.8 | py3.8-0.17.3 | py3.8-slim-0.17.3 | py3.8-alpine-0.17.3 |
@@ -178,11 +183,6 @@ Tags are based on the package version, python version, and the upstream containe
 | 0.17.0 | 3.8 | py3.8-0.17.0 | py3.8-slim-0.17.0 | py3.8-alpine-0.17.0 |
 | 0.17.0 | 3.7 | py3.7-0.17.0 | py3.7-slim-0.17.0 | py3.7-alpine-0.17.0 |
 | 0.17.0 | 3.6 | py3.6-0.17.0 | py3.6-slim-0.17.0 | py3.6-alpine-0.17.0 |
-| 0.16.0 | 3.10 | py3.10-0.16.0 | py3.10-slim-0.16.0 | py3.10-alpine-0.16.0 |
-| 0.16.0 | 3.9 | py3.9-0.16.0 | py3.9-slim-0.16.0 | py3.9-alpine-0.16.0 |
-| 0.16.0 | 3.8 | py3.8-0.16.0 | py3.8-slim-0.16.0 | py3.8-alpine-0.16.0 |
-| 0.16.0 | 3.7 | py3.7-0.16.0 | py3.7-slim-0.16.0 | py3.7-alpine-0.16.0 |
-| 0.16.0 | 3.6 | py3.6-0.16.0 | py3.6-slim-0.16.0 | py3.6-alpine-0.16.0 |
 
 
 ### Older Tags
