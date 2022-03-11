@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         python_versions: ["3.6", "3.7", "3.8", "3.9", "3.10"] 
-        package_versions: ["0.17.1", "0.17.2", "0.17.3", "0.17.4", "0.17.5"]
+        package_versions: ["0.17.2", "0.17.3", "0.17.4", "0.17.5", "0.17.6"]
         target_base: ["full", "slim", "alpine"]
     steps:
       - name: Checkout repository
@@ -31,7 +31,7 @@ jobs:
         timeout-minutes: 45
         with:
           package: "uvicorn[standard]"
-          package_latest_version: "0.17.5"
+          package_latest_version: "0.17.6"
           maintainer: "Robert Hafner <tedivm@tedivm.com>"
           python_version: ${{ matrix.python_versions }}
           package_version: ${{ matrix.package_versions }}
