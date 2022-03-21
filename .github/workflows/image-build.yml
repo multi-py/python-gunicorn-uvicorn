@@ -19,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python_versions: ["3.6", "3.7", "3.8", "3.9", "3.10"] 
+        python_versions: ["3.7", "3.8", "3.9", "3.10"] 
         package_versions: ["0.17.2", "0.17.3", "0.17.4", "0.17.5", "0.17.6"]
         target_base: ["full", "slim", "alpine"]
     steps:
