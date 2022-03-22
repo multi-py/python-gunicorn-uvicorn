@@ -1,10 +1,43 @@
 # python-gunicorn-uvicorn
 
 
-
 A multiarchitecture container image for running Python with Gunicorn and Uvicorn.
 
 For this container the latest version of gunicorn is always used, and the tags represent the uvicorn version.
+
+<!--ts-->
+* [python-gunicorn-uvicorn](#python-gunicorn-uvicorn)
+   * [Benefits](#benefits)
+      * [Multi Architecture Builds](#multi-architecture-builds)
+      * [Small Images via Multi Stage Builds](#small-images-via-multi-stage-builds)
+      * [No Rate Limits](#no-rate-limits)
+      * [Rapid Building of New Versions](#rapid-building-of-new-versions)
+      * [Regular Updates](#regular-updates)
+   * [How To](#how-to)
+      * [Full](#full)
+      * [Slim](#slim)
+      * [Copy Just the Packages](#copy-just-the-packages)
+      * [Add Your App](#add-your-app)
+      * [PreStart Script](#prestart-script)
+   * [Environmental Variables](#environmental-variables)
+      * [PORT](#port)
+      * [WORKERS](#workers)
+      * [LOG_LEVEL](#log_level)
+      * [MODULE_NAME](#module_name)
+      * [VARIABLE_NAME](#variable_name)
+      * [APP_MODULE](#app_module)
+      * [PRE_START_PATH](#pre_start_path)
+      * [RELOAD](#reload)
+   * [Python Versions](#python-versions)
+   * [Image Variants](#image-variants)
+      * [Full](#full-1)
+      * [Slim](#slim-1)
+      * [Alpine](#alpine)
+   * [Architectures](#architectures)
+   * [Sponsorship](#sponsorship)
+   * [Tags](#tags)
+      * [Older Tags](#older-tags)
+<!--te-->
 
 ## Benefits
 
@@ -92,6 +125,54 @@ COPY ./app app
 ### PreStart Script
 
 When the container is launched it will run the script at `/app/prestart.sh` before starting the uvicorn service. This is an ideal place to put things like database migrations.
+
+## Environmental Variables
+
+### `PORT`
+
+The port that the application inside of the container will listen on. This is different from the host port that gets mapped to the container.
+
+
+### `WORKERS`
+
+The number of workers to launch. A good starting point is 4 processes per core (defaults to 4).
+
+
+### `LOG_LEVEL`
+
+The uvicorn log level. Must be one of the following:
+
+* `critical`
+* `error`
+* `warning`
+* `info`
+* `debug`
+* `trace`
+
+
+### `MODULE_NAME`
+
+The python module that uvicorn will import. This value is used to generate the APP_MODULE value.
+
+
+### `VARIABLE_NAME`
+
+The python variable containing the ASGI application inside of the module that uvicorn imports. This value is used to generate the APP_MODULE value.
+
+
+### `APP_MODULE`
+
+The python module and variable that is passed to uvicorn. When used the `VARIABLE_NAME` and `MODULE_NAME` environmental variables are ignored.
+
+
+### `PRE_START_PATH`
+
+Where to find the prestart script.
+
+
+### `RELOAD`
+
+When this is set to the string `true` uvicorn is launched in reload mode. If any files change uvicorn will reload the modules again, allowing for quick debugging. This comes at a performance cost, however, and should not be enabled on production machines.
 
 ## Python Versions
 
@@ -189,50 +270,3 @@ Tags are based on the package version, python version, and the upstream containe
 
 Older tags are left for historic purposes but do not receive updates. A full list of tags can be found on the package's [registry page](https://github.com/multi-py/python-gunicorn-uvicorn/pkgs/container/python-gunicorn-uvicorn).
 
-## Environmental Variables
-
-### `PORT`
-
-The port that the application inside of the container will listen on. This is different from the host port that gets mapped to the container.
-
-
-### `WORKERS`
-
-The number of workers to launch. A good starting point is 4 processes per core (defaults to 4).
-
-
-### `LOG_LEVEL`
-
-The uvicorn log level. Must be one of the following:
-
-* `critical`
-* `error`
-* `warning`
-* `info`
-* `debug`
-* `trace`
-
-
-### `MODULE_NAME`
-
-The python module that uvicorn will import. This value is used to generate the APP_MODULE value.
-
-
-### `VARIABLE_NAME`
-
-The python variable containing the ASGI application inside of the module that uvicorn imports. This value is used to generate the APP_MODULE value.
-
-
-### `APP_MODULE`
-
-The python module and variable that is passed to uvicorn. When used the `VARIABLE_NAME` and `MODULE_NAME` environmental variables are ignored.
-
-
-### `PRE_START_PATH`
-
-Where to find the prestart script.
-
-
-### `RELOAD`
-
-When this is set to the string `true` uvicorn is launched in reload mode. If any files change uvicorn will reload the modules again, allowing for quick debugging. This comes at a performance cost, however, and should not be enabled on production machines.
