@@ -14,8 +14,9 @@ For this container the latest version of gunicorn is always used, and the tags r
       * [Rapid Building of New Versions](#rapid-building-of-new-versions)
       * [Regular Updates](#regular-updates)
    * [How To](#how-to)
-      * [Full](#full)
-      * [Slim](#slim)
+      * [Using the Full Image](#using-the-full-image)
+      * [Using the Slim Image](#using-the-slim-image)
+      * [Using the Alpine Image](#using-the-alpine-image)
       * [Copy Just the Packages](#copy-just-the-packages)
       * [Add Your App](#add-your-app)
       * [PreStart Script](#prestart-script)
@@ -30,8 +31,8 @@ For this container the latest version of gunicorn is always used, and the tags r
       * [RELOAD](#reload)
    * [Python Versions](#python-versions)
    * [Image Variants](#image-variants)
-      * [Full](#full-1)
-      * [Slim](#slim-1)
+      * [Full](#full)
+      * [Slim](#slim)
       * [Alpine](#alpine)
    * [Architectures](#architectures)
    * [Sponsorship](#sponsorship)
@@ -68,7 +69,9 @@ Containers are rebuilt weekly in order to take on the security patches from upst
 
 ## How To
 
-### Full
+### Using the Full Image
+The Full Images use the base Python Docker images as their parent. These images are based off of Ubuntu and contain a variety of build tools.
+
 To pull the latest full version:
 
 ```bash
@@ -81,7 +84,9 @@ To include it in the dockerfile instead:
 FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-LATEST
 ```
 
-### Slim
+### Using the Slim Image
+
+The Slim Images use the base Python Slim Docker images as their parent. These images are very similar to the Full images, but without the build tools. These images are much smaller than their counter parts but are more difficult to compile wheels on.
 
 To pull the latest slim version:
 
@@ -94,6 +99,30 @@ To include it in the dockerfile instead:
 ```dockerfile
 FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-slim-LATEST
 ```
+
+
+
+### Using the Alpine Image
+
+The Alpine Images use the base Python Alpine Docker images as their parent. These images use Alpine as their operating system, with musl instead of glibc.
+
+In theory these images are smaller than even the slim images, but this amounts to less than 30mb difference. Additional Python libraries tend not to be super well tested on Alpine. These images should be used with care and testing until this ecosystem matures.
+
+
+To pull the latest alpine version:
+
+```bash
+docker pull ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-alpine-LATEST
+```
+
+To include it in the dockerfile instead:
+
+```dockerfile
+FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.10-alpine-LATEST
+```
+
+
+
 
 ### Copy Just the Packages
 It's also possible to copy just the Python packages themselves. This is particularly useful when you want to use the precompiled libraries from multiple containers.
