@@ -21,7 +21,7 @@ jobs:
       matrix:
         python_versions: ["3.7", "3.8", "3.9", "3.10", "3.11"] 
         package_versions: ["0.18.2", "0.18.3", "0.19.0", "0.20.0", "0.21.0"]
-        target_base: ["full", "slim", "alpine"]
+        target_base: ["full", "slim"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
