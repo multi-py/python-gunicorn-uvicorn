@@ -16,7 +16,6 @@ For this container the latest version of gunicorn is always used, and the tags r
    * [How To](#how-to)
       * [Using the Full Image](#using-the-full-image)
       * [Using the Slim Image](#using-the-slim-image)
-      * [Using the Alpine Image](#using-the-alpine-image)
       * [Copy Just the Packages](#copy-just-the-packages)
       * [Add Your App](#add-your-app)
       * [PreStart Script](#prestart-script)
@@ -33,7 +32,6 @@ For this container the latest version of gunicorn is always used, and the tags r
    * [Image Variants](#image-variants)
       * [Full](#full)
       * [Slim](#slim)
-      * [Alpine](#alpine)
    * [Architectures](#architectures)
    * [Sponsorship](#sponsorship)
    * [Tags](#tags)
@@ -100,26 +98,6 @@ To include it in the dockerfile instead:
 FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-slim-LATEST
 ```
 
-
-
-### Using the Alpine Image
-
-The Alpine Images use the base Python Alpine Docker images as their parent. These images use Alpine as their operating system, with musl instead of glibc.
-
-In theory these images are smaller than even the slim images, but this amounts to less than 30mb difference. Additional Python libraries tend not to be super well tested on Alpine. These images should be used with care and testing until this ecosystem matures.
-
-
-To pull the latest alpine version:
-
-```bash
-docker pull ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-alpine-LATEST
-```
-
-To include it in the dockerfile instead:
-
-```dockerfile
-FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-alpine-LATEST
-```
 
 
 
@@ -231,10 +209,6 @@ This container is similar to Full but with far less libraries and tools installe
 
 
 
-### Alpine
-
-This container is provided for those who wish to use Alpine. Alpine works a bit differently than the other image types, as it uses `musl` instead of `glibc` and many libaries are not well tested under `musl` at this time.
-
 
 
 ## Architectures
@@ -261,38 +235,38 @@ If you get use out of these containers please consider sponsoring me using Githu
 
 Tags are based on the package version, python version, and the upstream container the container is based on.
 
-| uvicorn Version | Python Version | Full Container | Slim Container | Alpine Container |
-|-----------------------|----------------|----------------|----------------|------------------|
-| latest | 3.11 | py3.11-latest | py3.11-slim-latest | py3.11-alpine-latest |
-| latest | 3.10 | py3.10-latest | py3.10-slim-latest | py3.10-alpine-latest |
-| latest | 3.9 | py3.9-latest | py3.9-slim-latest | py3.9-alpine-latest |
-| latest | 3.8 | py3.8-latest | py3.8-slim-latest | py3.8-alpine-latest |
-| latest | 3.7 | py3.7-latest | py3.7-slim-latest | py3.7-alpine-latest |
-| 0.21.0 | 3.11 | py3.11-0.21.0 | py3.11-slim-0.21.0 | py3.11-alpine-0.21.0 |
-| 0.21.0 | 3.10 | py3.10-0.21.0 | py3.10-slim-0.21.0 | py3.10-alpine-0.21.0 |
-| 0.21.0 | 3.9 | py3.9-0.21.0 | py3.9-slim-0.21.0 | py3.9-alpine-0.21.0 |
-| 0.21.0 | 3.8 | py3.8-0.21.0 | py3.8-slim-0.21.0 | py3.8-alpine-0.21.0 |
-| 0.21.0 | 3.7 | py3.7-0.21.0 | py3.7-slim-0.21.0 | py3.7-alpine-0.21.0 |
-| 0.20.0 | 3.11 | py3.11-0.20.0 | py3.11-slim-0.20.0 | py3.11-alpine-0.20.0 |
-| 0.20.0 | 3.10 | py3.10-0.20.0 | py3.10-slim-0.20.0 | py3.10-alpine-0.20.0 |
-| 0.20.0 | 3.9 | py3.9-0.20.0 | py3.9-slim-0.20.0 | py3.9-alpine-0.20.0 |
-| 0.20.0 | 3.8 | py3.8-0.20.0 | py3.8-slim-0.20.0 | py3.8-alpine-0.20.0 |
-| 0.20.0 | 3.7 | py3.7-0.20.0 | py3.7-slim-0.20.0 | py3.7-alpine-0.20.0 |
-| 0.19.0 | 3.11 | py3.11-0.19.0 | py3.11-slim-0.19.0 | py3.11-alpine-0.19.0 |
-| 0.19.0 | 3.10 | py3.10-0.19.0 | py3.10-slim-0.19.0 | py3.10-alpine-0.19.0 |
-| 0.19.0 | 3.9 | py3.9-0.19.0 | py3.9-slim-0.19.0 | py3.9-alpine-0.19.0 |
-| 0.19.0 | 3.8 | py3.8-0.19.0 | py3.8-slim-0.19.0 | py3.8-alpine-0.19.0 |
-| 0.19.0 | 3.7 | py3.7-0.19.0 | py3.7-slim-0.19.0 | py3.7-alpine-0.19.0 |
-| 0.18.3 | 3.11 | py3.11-0.18.3 | py3.11-slim-0.18.3 | py3.11-alpine-0.18.3 |
-| 0.18.3 | 3.10 | py3.10-0.18.3 | py3.10-slim-0.18.3 | py3.10-alpine-0.18.3 |
-| 0.18.3 | 3.9 | py3.9-0.18.3 | py3.9-slim-0.18.3 | py3.9-alpine-0.18.3 |
-| 0.18.3 | 3.8 | py3.8-0.18.3 | py3.8-slim-0.18.3 | py3.8-alpine-0.18.3 |
-| 0.18.3 | 3.7 | py3.7-0.18.3 | py3.7-slim-0.18.3 | py3.7-alpine-0.18.3 |
-| 0.18.2 | 3.11 | py3.11-0.18.2 | py3.11-slim-0.18.2 | py3.11-alpine-0.18.2 |
-| 0.18.2 | 3.10 | py3.10-0.18.2 | py3.10-slim-0.18.2 | py3.10-alpine-0.18.2 |
-| 0.18.2 | 3.9 | py3.9-0.18.2 | py3.9-slim-0.18.2 | py3.9-alpine-0.18.2 |
-| 0.18.2 | 3.8 | py3.8-0.18.2 | py3.8-slim-0.18.2 | py3.8-alpine-0.18.2 |
-| 0.18.2 | 3.7 | py3.7-0.18.2 | py3.7-slim-0.18.2 | py3.7-alpine-0.18.2 |
+| uvicorn Version | Python Version | Full Container | Slim Container |
+|-----------------------|----------------|----------------|----------------|
+| latest | 3.11 | py3.11-latest | py3.11-slim-latest |
+| latest | 3.10 | py3.10-latest | py3.10-slim-latest |
+| latest | 3.9 | py3.9-latest | py3.9-slim-latest |
+| latest | 3.8 | py3.8-latest | py3.8-slim-latest |
+| latest | 3.7 | py3.7-latest | py3.7-slim-latest |
+| 0.21.0 | 3.11 | py3.11-0.21.0 | py3.11-slim-0.21.0 |
+| 0.21.0 | 3.10 | py3.10-0.21.0 | py3.10-slim-0.21.0 |
+| 0.21.0 | 3.9 | py3.9-0.21.0 | py3.9-slim-0.21.0 |
+| 0.21.0 | 3.8 | py3.8-0.21.0 | py3.8-slim-0.21.0 |
+| 0.21.0 | 3.7 | py3.7-0.21.0 | py3.7-slim-0.21.0 |
+| 0.20.0 | 3.11 | py3.11-0.20.0 | py3.11-slim-0.20.0 |
+| 0.20.0 | 3.10 | py3.10-0.20.0 | py3.10-slim-0.20.0 |
+| 0.20.0 | 3.9 | py3.9-0.20.0 | py3.9-slim-0.20.0 |
+| 0.20.0 | 3.8 | py3.8-0.20.0 | py3.8-slim-0.20.0 |
+| 0.20.0 | 3.7 | py3.7-0.20.0 | py3.7-slim-0.20.0 |
+| 0.19.0 | 3.11 | py3.11-0.19.0 | py3.11-slim-0.19.0 |
+| 0.19.0 | 3.10 | py3.10-0.19.0 | py3.10-slim-0.19.0 |
+| 0.19.0 | 3.9 | py3.9-0.19.0 | py3.9-slim-0.19.0 |
+| 0.19.0 | 3.8 | py3.8-0.19.0 | py3.8-slim-0.19.0 |
+| 0.19.0 | 3.7 | py3.7-0.19.0 | py3.7-slim-0.19.0 |
+| 0.18.3 | 3.11 | py3.11-0.18.3 | py3.11-slim-0.18.3 |
+| 0.18.3 | 3.10 | py3.10-0.18.3 | py3.10-slim-0.18.3 |
+| 0.18.3 | 3.9 | py3.9-0.18.3 | py3.9-slim-0.18.3 |
+| 0.18.3 | 3.8 | py3.8-0.18.3 | py3.8-slim-0.18.3 |
+| 0.18.3 | 3.7 | py3.7-0.18.3 | py3.7-slim-0.18.3 |
+| 0.18.2 | 3.11 | py3.11-0.18.2 | py3.11-slim-0.18.2 |
+| 0.18.2 | 3.10 | py3.10-0.18.2 | py3.10-slim-0.18.2 |
+| 0.18.2 | 3.9 | py3.9-0.18.2 | py3.9-slim-0.18.2 |
+| 0.18.2 | 3.8 | py3.8-0.18.2 | py3.8-slim-0.18.2 |
+| 0.18.2 | 3.7 | py3.7-0.18.2 | py3.7-slim-0.18.2 |
 
 
 ### Older Tags
