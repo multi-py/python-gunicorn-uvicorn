@@ -28,6 +28,8 @@ For this container the latest version of gunicorn is always used, and the tags r
     * [APP_MODULE](#app_module)
     * [PRE_START_PATH](#pre_start_path)
     * [RELOAD](#reload)
+    * [GUNICORN_EXTRA_FLAGS](#gunicorn-extra-flags)
+    * [UVICORN_EXTRA_FLAGS](#uvicorn-extra-flags)
   * [Python Versions](#python-versions)
   * [Image Variants](#image-variants)
     * [Full](#full)
