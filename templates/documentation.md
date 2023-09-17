@@ -45,3 +45,13 @@ Where to find the prestart script.
 ### `RELOAD`
 
 When this is set to the string `true` uvicorn is launched in reload mode. If any files change uvicorn will reload the modules again, allowing for quick debugging. This comes at a performance cost, however, and should not be enabled on production machines.
+
+### `GUNICORN_EXTRA_FLAGS`
+
+This variable can be used to pass extra flags to the `gunicorn` command on launch. It's value is added directly to the command that is called, and has to be formatted appropriately for the command line.
+
+
+### `UVICORN_EXTRA_FLAGS`
+
+This variable can be used to pass extra flags to the `uvicorn` command on launch. It's value is added directly to the command that is called, and has to be formatted appropriately for the command line.
+
