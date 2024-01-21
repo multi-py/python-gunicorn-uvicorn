@@ -1,5 +1,5 @@
 
-name: Uvicorn Image Builder
+name: Gunicorn Uvicorn Image Builder
 
 # Publish on new pushed, and build on Monday Morning (UTC) regardless.
 on:
