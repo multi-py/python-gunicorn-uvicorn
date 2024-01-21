@@ -75,13 +75,13 @@ The Full Images use the base Python Docker images as their parent. These images 
 To pull the latest full version:
 
 ```bash
-docker pull ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-LATEST
+docker pull ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-LATEST
 ```
 
 To include it in the dockerfile instead:
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-LATEST
+FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-LATEST
 ```
 
 ### Using the Slim Image
@@ -91,13 +91,13 @@ The Slim Images use the base Python Slim Docker images as their parent. These im
 To pull the latest slim version:
 
 ```bash
-docker pull ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-slim-LATEST
+docker pull ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-slim-LATEST
 ```
 
 To include it in the dockerfile instead:
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-slim-LATEST
+FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-slim-LATEST
 ```
 
 
@@ -108,9 +108,9 @@ FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-slim-LATEST
 It's also possible to copy just the Python packages themselves. This is particularly useful when you want to use the precompiled libraries from multiple containers.
 
 ```dockerfile
-FROM python:3.11
+FROM python:3.12
 
-COPY --from=ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-slim-LATEST /usr/local/lib/python3.11/site-packages/* /usr/local/lib/python3.11/site-packages/
+COPY --from=ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-slim-LATEST /usr/local/lib/python3.12/site-packages/* /usr/local/lib/python3.12/site-packages/
 ```
 
 ### Add Your App
@@ -123,7 +123,7 @@ By default the startup script checks for the following packages and uses the fir
 If you are using pip to install dependencies your dockerfile could look like this-
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-0.26.0
+FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-0.26.0
 
 COPY requirements /requirements
 RUN pip install --no-cache-dir -r /requirements
@@ -197,11 +197,11 @@ This variable can be used to pass extra flags to the `uvicorn` command on launch
 
 This project actively supports these Python versions:
 
+* 3.12
 * 3.11
 * 3.10
 * 3.9
 * 3.8
-* 3.7
 
 
 ## Image Variants
@@ -242,43 +242,43 @@ If you get use out of these containers please consider sponsoring me using Githu
 </center>
 
 ## Tags
-* Recommended Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-0.26.0`
-* Slim Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.11-slim-0.26.0`
+* Recommended Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-0.26.0`
+* Slim Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-slim-0.26.0`
 
 Tags are based on the package version, python version, and the upstream container the container is based on.
 
 | uvicorn Version | Python Version | Full Container | Slim Container |
 |-----------------------|----------------|----------------|----------------|
+| latest | 3.12 | py3.12-latest | py3.12-slim-latest |
 | latest | 3.11 | py3.11-latest | py3.11-slim-latest |
 | latest | 3.10 | py3.10-latest | py3.10-slim-latest |
 | latest | 3.9 | py3.9-latest | py3.9-slim-latest |
 | latest | 3.8 | py3.8-latest | py3.8-slim-latest |
-| latest | 3.7 | py3.7-latest | py3.7-slim-latest |
+| 0.26.0 | 3.12 | py3.12-0.26.0 | py3.12-slim-0.26.0 |
 | 0.26.0 | 3.11 | py3.11-0.26.0 | py3.11-slim-0.26.0 |
 | 0.26.0 | 3.10 | py3.10-0.26.0 | py3.10-slim-0.26.0 |
 | 0.26.0 | 3.9 | py3.9-0.26.0 | py3.9-slim-0.26.0 |
 | 0.26.0 | 3.8 | py3.8-0.26.0 | py3.8-slim-0.26.0 |
-| 0.26.0 | 3.7 | py3.7-0.26.0 | py3.7-slim-0.26.0 |
+| 0.25.0 | 3.12 | py3.12-0.25.0 | py3.12-slim-0.25.0 |
 | 0.25.0 | 3.11 | py3.11-0.25.0 | py3.11-slim-0.25.0 |
 | 0.25.0 | 3.10 | py3.10-0.25.0 | py3.10-slim-0.25.0 |
 | 0.25.0 | 3.9 | py3.9-0.25.0 | py3.9-slim-0.25.0 |
 | 0.25.0 | 3.8 | py3.8-0.25.0 | py3.8-slim-0.25.0 |
-| 0.25.0 | 3.7 | py3.7-0.25.0 | py3.7-slim-0.25.0 |
+| 0.24.0 | 3.12 | py3.12-0.24.0 | py3.12-slim-0.24.0 |
 | 0.24.0 | 3.11 | py3.11-0.24.0 | py3.11-slim-0.24.0 |
 | 0.24.0 | 3.10 | py3.10-0.24.0 | py3.10-slim-0.24.0 |
 | 0.24.0 | 3.9 | py3.9-0.24.0 | py3.9-slim-0.24.0 |
 | 0.24.0 | 3.8 | py3.8-0.24.0 | py3.8-slim-0.24.0 |
-| 0.24.0 | 3.7 | py3.7-0.24.0 | py3.7-slim-0.24.0 |
+| 0.23.2 | 3.12 | py3.12-0.23.2 | py3.12-slim-0.23.2 |
 | 0.23.2 | 3.11 | py3.11-0.23.2 | py3.11-slim-0.23.2 |
 | 0.23.2 | 3.10 | py3.10-0.23.2 | py3.10-slim-0.23.2 |
 | 0.23.2 | 3.9 | py3.9-0.23.2 | py3.9-slim-0.23.2 |
 | 0.23.2 | 3.8 | py3.8-0.23.2 | py3.8-slim-0.23.2 |
-| 0.23.2 | 3.7 | py3.7-0.23.2 | py3.7-slim-0.23.2 |
+| 0.23.1 | 3.12 | py3.12-0.23.1 | py3.12-slim-0.23.1 |
 | 0.23.1 | 3.11 | py3.11-0.23.1 | py3.11-slim-0.23.1 |
 | 0.23.1 | 3.10 | py3.10-0.23.1 | py3.10-slim-0.23.1 |
 | 0.23.1 | 3.9 | py3.9-0.23.1 | py3.9-slim-0.23.1 |
 | 0.23.1 | 3.8 | py3.8-0.23.1 | py3.8-slim-0.23.1 |
-| 0.23.1 | 3.7 | py3.7-0.23.1 | py3.7-slim-0.23.1 |
 
 
 ### Older Tags
