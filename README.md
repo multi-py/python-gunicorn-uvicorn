@@ -6,7 +6,38 @@ A multiarchitecture container image for running Python with Gunicorn and Uvicorn
 For this container the latest version of gunicorn is always used, and the tags represent the uvicorn version.
 
 <!--ts-->
-
+* [python-gunicorn-uvicorn](#python-gunicorn-uvicorn)
+   * [Benefits](#benefits)
+      * [Multi Architecture Builds](#multi-architecture-builds)
+      * [Small Images via Multi Stage Builds](#small-images-via-multi-stage-builds)
+      * [No Rate Limits](#no-rate-limits)
+      * [Rapid Building of New Versions](#rapid-building-of-new-versions)
+      * [Regular Updates](#regular-updates)
+   * [How To](#how-to)
+      * [Using the Full Image](#using-the-full-image)
+      * [Using the Slim Image](#using-the-slim-image)
+      * [Copy Just the Packages](#copy-just-the-packages)
+      * [Add Your App](#add-your-app)
+      * [PreStart Script](#prestart-script)
+   * [Environmental Variables](#environmental-variables)
+      * [PORT](#port)
+      * [WORKERS](#workers)
+      * [LOG_LEVEL](#log_level)
+      * [MODULE_NAME](#module_name)
+      * [VARIABLE_NAME](#variable_name)
+      * [APP_MODULE](#app_module)
+      * [PRE_START_PATH](#pre_start_path)
+      * [RELOAD](#reload)
+      * [GUNICORN_EXTRA_FLAGS](#gunicorn_extra_flags)
+      * [UVICORN_EXTRA_FLAGS](#uvicorn_extra_flags)
+   * [Python Versions](#python-versions)
+   * [Image Variants](#image-variants)
+      * [Full](#full)
+      * [Slim](#slim)
+   * [Architectures](#architectures)
+   * [Sponsorship](#sponsorship)
+   * [Tags](#tags)
+      * [Older Tags](#older-tags)
 <!--te-->
 
 ## Benefits
