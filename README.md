@@ -123,7 +123,7 @@ By default the startup script checks for the following packages and uses the fir
 If you are using pip to install dependencies your dockerfile could look like this-
 
 ```dockerfile
-FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-0.36.1
+FROM ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-0.37.0
 
 COPY requirements /requirements
 RUN pip install --no-cache-dir -r /requirements
@@ -242,8 +242,8 @@ If you get use out of these containers please consider sponsoring me using Githu
 </center>
 
 ## Tags
-* Recommended Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-0.36.1`
-* Slim Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-slim-0.36.1`
+* Recommended Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-0.37.0`
+* Slim Image: `ghcr.io/multi-py/python-gunicorn-uvicorn:py3.12-slim-0.37.0`
 
 Tags are based on the package version, python version, and the upstream container the container is based on.
 
@@ -254,6 +254,11 @@ Tags are based on the package version, python version, and the upstream containe
 | latest | 3.10 | py3.10-latest | py3.10-slim-latest |
 | latest | 3.9 | py3.9-latest | py3.9-slim-latest |
 | latest | 3.8 | py3.8-latest | py3.8-slim-latest |
+| 0.37.0 | 3.12 | py3.12-0.37.0 | py3.12-slim-0.37.0 |
+| 0.37.0 | 3.11 | py3.11-0.37.0 | py3.11-slim-0.37.0 |
+| 0.37.0 | 3.10 | py3.10-0.37.0 | py3.10-slim-0.37.0 |
+| 0.37.0 | 3.9 | py3.9-0.37.0 | py3.9-slim-0.37.0 |
+| 0.37.0 | 3.8 | py3.8-0.37.0 | py3.8-slim-0.37.0 |
 | 0.36.1 | 3.12 | py3.12-0.36.1 | py3.12-slim-0.36.1 |
 | 0.36.1 | 3.11 | py3.11-0.36.1 | py3.11-slim-0.36.1 |
 | 0.36.1 | 3.10 | py3.10-0.36.1 | py3.10-slim-0.36.1 |
@@ -274,11 +279,6 @@ Tags are based on the package version, python version, and the upstream containe
 | 0.34.3 | 3.10 | py3.10-0.34.3 | py3.10-slim-0.34.3 |
 | 0.34.3 | 3.9 | py3.9-0.34.3 | py3.9-slim-0.34.3 |
 | 0.34.3 | 3.8 | py3.8-0.34.3 | py3.8-slim-0.34.3 |
-| 0.34.2 | 3.12 | py3.12-0.34.2 | py3.12-slim-0.34.2 |
-| 0.34.2 | 3.11 | py3.11-0.34.2 | py3.11-slim-0.34.2 |
-| 0.34.2 | 3.10 | py3.10-0.34.2 | py3.10-slim-0.34.2 |
-| 0.34.2 | 3.9 | py3.9-0.34.2 | py3.9-slim-0.34.2 |
-| 0.34.2 | 3.8 | py3.8-0.34.2 | py3.8-slim-0.34.2 |
 
 
 ### Older Tags
