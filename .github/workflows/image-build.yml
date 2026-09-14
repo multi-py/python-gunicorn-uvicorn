@@ -24,7 +24,7 @@ jobs:
         target_base: ["full", "slim"]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: "Create and Push Image"
         uses: multi-py/action-python-image-builder@v1
